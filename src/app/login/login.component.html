@@ -1,0 +1,41 @@
+<div class="wrapper">
+  <form [formGroup]="form" (ngSubmit)="signInWithEmailAndPassword(form)">
+    <p class="hint-text">Sign in with your social media account</p>
+    <div class="form-group social-btn clearfix">
+      <div>
+        <a class="btn btn-primary pull-left" (click)="auth.facebookSignin()">
+          <i class="fa fa-facebook"></i>
+          Facebook
+        </a>
+      </div>
+      <div>
+        <a class="btn btn-info pull-right" (click)="auth.googleSignin()">
+          <i class="fa fa-google"></i>
+          Google
+        </a>
+      </div>
+    </div>
+    <div class="or-seperator"><b>or</b></div>
+    <div class="form-group">
+      <input type="text" class="form-control" placeholder="Username"
+        required formControlName="username"
+        [class.is-invalid]="username.touched && username.invalid">
+      <div *ngIf="username.touched && username.invalid" class="alert-text text-danger">
+        <Label *ngIf="username.errors.required">Username is required.</Label>
+        <Label *ngIf="username.errors.email">Username is badly formatted.</Label>
+      </div>
+    </div>
+    <div class="form-group">
+      <input type="password" class="form-control" placeholder="Password"
+        required="required" formControlName="password"
+        [class.is-invalid]="password.touched && password.invalid">
+      <div *ngIf="password.touched && password.invalid" class="alert-text text-danger">
+        Password is required.
+      </div>
+    </div>
+    <button type="submit" class="btn btn-primary btn-block"[disabled]="form.invalid">Submit</button>
+    <div class="form-footer">
+      <a (click)="forgotPassword(form)">Forgot Your password?</a>
+    </div>
+  </form>
+</div>

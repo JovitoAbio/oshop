@@ -1,0 +1,41 @@
+a.btn {
+  min-width: 100px;
+  height: 35px;
+  padding-top: 4px;
+  border-radius: 6px;
+  &:hover {
+    color: white;
+  }
+}
+
+div {
+  margin: 0px;
+  padding: 0px;
+}
+
+.brand {
+  display: flex;
+  text-align: center;
+  justify-content: center;
+  font-size: 25px;
+  font-weight: 200;
+  position: relative;
+  top: -3px;
+}
+
+.link {
+  cursor: pointer;
+  &:hover, :active {
+    color: deeppink !important;
+  }
+}
+
+.btn-wrapper {
+  display: flex;
+}
+
+.avatar {
+  border-radius: 100%;
+  height: 35px;
+  width: 35px;
+}

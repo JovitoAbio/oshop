@@ -1,0 +1,64 @@
+.wrapper {
+  display: block;
+  justify-content: center;
+  margin: auto;
+  min-width: 300px;
+  padding: 20px 20px;
+}
+
+.hint-text {
+  text-align: center;
+  margin-bottom: 15px;
+  font-size: 14px;
+}
+
+.form-control {
+  box-shadow: none;
+  font-weight: normal;
+  font-size: 14px;
+  &:focus {
+    border-color: #33cabb;
+    box-shadow: 0 0 8px rgba(0,0,0,0.1);
+  }
+}
+
+.btn-primary, .btn-primary:active {
+  color: #fff;
+  background: #33cabb;
+  padding-top: 6px;
+  padding-bottom: 8px;
+  vertical-align: middle;
+  border: none;
+  &:hover, &:focus {
+    color: #fff;
+    outline: none;
+    background: #31bfb1;
+  }
+}
+.form-group {
+  .custom-checkbox {
+    box-shadow: none;
+    font-weight: normal;
+    font-size: 14px;
+    a {
+      cursor: pointer;
+      text-align: center;
+      color: #33cabb;
+      &:hover{
+        text-decoration: underline;
+        color: #31bfb1;
+      }
+    }
+  }
+}
+
+
+.alert-text {
+  margin: 0px;
+  padding: 0px;
+  font-size: 13px;
+  label {
+    margin: 0px;
+    padding: 0px;
+  }
+}
