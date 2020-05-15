@@ -1,7 +1,10 @@
+import { ProductService } from './shared/product.service';
+import { AuthService } from './shared/auth.service';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
+import { CustomFormsModule } from 'ngx-custom-validators';
 
 import { AngularFireModule } from '@angular/fire';
 import { AngularFireDatabaseModule } from '@angular/fire/database';
@@ -20,6 +23,10 @@ import { ShoppingCartComponent } from './shopping-cart/shopping-cart.component';
 import { AdminOrdersComponent } from './admin/admin-orders/admin-orders.component';
 import { AdminProductsComponent } from './admin/admin-products/admin-products.component';
 import { ProductsComponent } from './products/products.component';
+import { ProductFormComponent } from './admin/product-form/product-form.component';
+import { AuthGuard } from './shared/auth.guard';
+import { AdminAuthGuard } from './shared/admin-auth.guard';
+import { CategoryService } from './shared/category.service';
 
 @NgModule({
   declarations: [
@@ -34,7 +41,8 @@ import { ProductsComponent } from './products/products.component';
     OrderSuccessComponent,
     ShoppingCartComponent,
     AdminOrdersComponent,
-    AdminProductsComponent
+    AdminProductsComponent,
+    ProductFormComponent
   ],
   imports: [
     BrowserModule,
@@ -42,9 +50,16 @@ import { ProductsComponent } from './products/products.component';
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireDatabaseModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    CustomFormsModule
   ],
-  providers: [],
+  providers: [
+    AuthService,
+    AuthGuard,
+    AdminAuthGuard,
+    CategoryService,
+    ProductService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

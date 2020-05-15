@@ -2,39 +2,43 @@
   <div class="brand m-0 mr-md-auto text-primary" routerLink="/">
     oshop
   </div>
-  <nav class="my-2 mr-md-3">
-    <a class="p-2 text-dark link" routerLink="/shopping-cart">Shopping Cart</a>
-  </nav>
-  <div *ngIf="auth.user$ | async as user; else showLogin">
-    <a data-toggle="dropdown" class="user-action">
-      <img [src]="user.photoURL || avatarUrl" class="avatar" alt="user">
-    </a>
-    <ul class="dropdown-menu">
-      <li><a routerLink="/user-profile" class="dropdown-item"><i class="fa fa-user-o"></i> Profile</a></li>
-      <li><a routerLink="/my-orders" class="dropdown-item"><i class="fa fa-sliders"></i> My Orders</a></li>
-      <li><a routerLink="/manage-orders" class="dropdown-item"><i class="fa fa-user-o"></i> Manage Orders</a></li>
-      <li><a routerLink="/manage-products" class="dropdown-item"><i class="fa fa-sliders"></i> Manage Products</a></li>
-      <li class="divider dropdown-divider"></li>
-      <li>
-        <a routerLink="/" class="dropdown-item" (click)="logout()">
-        <i class="fa fa-power-off"></i> Logout</a>
-      </li>
-    </ul>
-  </div>
-  <ng-template #showLogin>
-    <div class="btn-wrapper">
-      <div class="m-1">
-        <a data-toggle="dropdown" class="btn btn-outline-primary">Login</a>
-        <div class="dropdown-menu">
-          <app-login></app-login>
+  <div class="item-wrapper">
+    <nav class="my-2 mr-md-3">
+      <a class="p-2 text-dark link" routerLink="/shopping-cart">Shopping Cart</a>
+    </nav>
+    <div *ngIf="auth.user$ | async as user; else showLogin">
+      <a data-toggle="dropdown" class="user-action">
+        <img [src]="user.photoURL || avatarUrl" class="avatar" alt="user">
+      </a>
+      <ul class="dropdown-menu">
+        <li><a routerLink="/user-profile" class="dropdown-item"><i class="fa fa-user-o"></i> Profile</a></li>
+        <li><a routerLink="/my/orders" class="dropdown-item"><i class="fa fa-sliders"></i> My Orders</a></li>
+        <div *ngIf="user.isAdmin">
+          <li><a routerLink="/admin/orders" class="dropdown-item"><i class="fa fa-user-o"></i> Manage Orders</a></li>
+          <li><a routerLink="/admin/products" class="dropdown-item"><i class="fa fa-sliders"></i> Manage Products</a></li>
         </div>
-      </div>
-      <div class="m-1">
-        <a data-toggle="dropdown" class="btn btn-outline-warning">Sign up</a>
-        <div class="dropdown-menu">
-          <app-signup></app-signup>
-        </div>
-      </div>
+        <li class="divider dropdown-divider"></li>
+        <li>
+          <a routerLink="/" class="dropdown-item" (click)="logout()">
+          <i class="fa fa-power-off"></i> Logout</a>
+        </li>
+      </ul>
     </div>
-  </ng-template>
+    <ng-template #showLogin>
+      <div class="btn-wrapper">
+        <div class="m-1">
+          <a data-toggle="dropdown" class="btn btn-outline-primary">Login</a>
+          <div class="dropdown-menu">
+            <app-login></app-login>
+          </div>
+        </div>
+        <div class="m-1">
+          <a data-toggle="dropdown" class="btn btn-outline-warning">Sign up</a>
+          <div class="dropdown-menu">
+            <app-signup></app-signup>
+          </div>
+        </div>
+      </div>
+    </ng-template>
+  </div>
 </div>

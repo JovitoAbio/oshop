@@ -23,6 +23,10 @@ div {
   top: -3px;
 }
 
+.item-wrapper {
+  display: flex;
+}
+
 .link {
   cursor: pointer;
   &:hover, :active {

@@ -33,13 +33,11 @@ export class AuthService {
   }
 
   async createUserWithEmailAndPassword(email, password) {
-    const provider = new auth.EmailAuthProvider();
     const credential = this.afAuth.createUserWithEmailAndPassword(email, password);
     return this.updateUserData((await credential).user);
   }
 
   async signInWithEmailAndPassword(email, password) {
-    const provider = new auth.EmailAuthProvider();
     const credential = this.afAuth.signInWithEmailAndPassword(email, password);
     return this.updateUserData((await credential).user);
   }
