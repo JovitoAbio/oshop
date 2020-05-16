@@ -27,6 +27,10 @@ import { ProductFormComponent } from './admin/product-form/product-form.componen
 import { AuthGuard } from './shared/auth.guard';
 import { AdminAuthGuard } from './shared/admin-auth.guard';
 import { CategoryService } from './shared/category.service';
+import { GridModule } from '@progress/kendo-angular-grid';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
+
 
 @NgModule({
   declarations: [
@@ -51,7 +55,9 @@ import { CategoryService } from './shared/category.service';
     AngularFireDatabaseModule,
     FormsModule,
     ReactiveFormsModule,
-    CustomFormsModule
+    CustomFormsModule,
+    GridModule,
+    BrowserAnimationsModule
   ],
   providers: [
     AuthService,

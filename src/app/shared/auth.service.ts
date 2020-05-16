@@ -62,7 +62,9 @@ export class AuthService {
       uid: user.uid,
       email: user.email,
       displayName: user.displayName,
-      photoURL: user.photoURL
+      photoURL: user.photoURL,
+      isAdmin: user.isAdmin,
+      termsAndConditionAccepted: true
     }
 
     return userRef.set(data, { merge: true })

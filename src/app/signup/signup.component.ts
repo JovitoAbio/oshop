@@ -1,6 +1,8 @@
 import { AuthService } from './../shared/auth.service';
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators, NgForm } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms';
+import { CustomValidators } from 'ngx-custom-validators';
+
 
 @Component({
   selector: 'app-signup',
@@ -10,10 +12,13 @@ import { FormBuilder, FormGroup, Validators, NgForm } from '@angular/forms';
 export class SignupComponent implements OnInit {
   form: FormGroup;
   constructor(fb: FormBuilder, public auth: AuthService) {
+    let password = new FormControl('', Validators.required);
+    let confirmPassword = new FormControl('', [Validators.required, CustomValidators.equalTo(password)]);
     this.form = fb.group({
       username: ['', [Validators.required, Validators.email]],
-      password: ['', Validators.required],
-      confirmPassword: ['', Validators.required]
+      password: password,
+      confirmPassword: confirmPassword,
+      termsAndConditionAccepted: ['', Validators.required]
     });
   }
 

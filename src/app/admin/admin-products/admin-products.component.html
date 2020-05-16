@@ -7,19 +7,22 @@
     (keyup)="filter(query.value)">
   </div>
 </div>
-  <table class="table">
-    <tr>
-      <th>Title</th>
-      <th>Price</th>
-      <th></th>
-    </tr>
-    <tbody>
-      <tr *ngFor="let product of filteredProducts">
-        <td>{{ product.title }}</td>
-        <td>{{ product.price }}</td>
-        <td>
-          <a [routerLink]="['/admin/products/', product.id]">Edit</a>
-        </td>
-      </tr>
-    </tbody>
-  </table>
+
+<kendo-grid
+  [kendoGridBinding]="filteredProducts"
+  kendoGridSelectBy="id"
+  [pageSize]="12"
+  [pageable]="true"
+  [sortable]="true"
+  [reorderable]="true"
+  [resizable]="true"
+  [height]="520"
+  [columnMenu]="{ }">
+  <kendo-grid-column field="title" title="Title" [width]="220"></kendo-grid-column>
+  <kendo-grid-column field="price" title="Price" [width]="220"></kendo-grid-column>
+  <kendo-grid-column [width]="100" [resizable]="false">
+    <ng-template kendoGridCellTemplate let-product>
+      <a class="text-center" [routerLink]="['/admin/products/', product.id]">Edit</a>
+    </ng-template>
+  </kendo-grid-column>
+</kendo-grid>

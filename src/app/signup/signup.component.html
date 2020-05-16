@@ -13,7 +13,8 @@
     <div class="form-group">
       <input type="password" class="form-control" placeholder="Password"
         required formControlName="password"
-        [class.is-invalid]="password.touched && password.invalid">
+        [class.is-invalid]="password.touched && password.invalid"
+        [class.is-invalid]="confirmPassword.touched && confirmPassword.invalid && confirmPassword.errors?.equalTo">
       <div *ngIf="password.touched && password.invalid"
         class="alert-text text-danger">
         Password is required.
@@ -23,17 +24,20 @@
       <input type="password" class="form-control" placeholder="Confirm Password"
         required formControlName="confirmPassword"
         [class.is-invalid]="confirmPassword.touched && confirmPassword.invalid">
-      <div *ngIf="confirmPassword.touched && confirmPassword.invalid"
-        class="alert-text text-danger">Confirm password is required.</div>
+      <div *ngIf="confirmPassword.touched && confirmPassword.invalid" class="alert-text text-danger">
+        <div *ngIf="confirmPassword.errors.required">Confirm password is required.</div>
+        <div *ngIf="confirmPassword.errors?.equalTo">Passwords do not match.</div>
+      </div>
     </div>
     <div class="form-group">
       <div class="custom-control custom-checkbox">
-        <input type="checkbox" class="custom-control-input" id="customControlValidation1" required>
-        <label class="custom-control-label" for="customControlValidation1">
+        <input type="checkbox" class="custom-control-input" id="termsAndConditionAccepted"
+          required formControlName="termsAndConditionAccepted">
+        <label class="custom-control-label" for="termsAndConditionAccepted">
           I accept the <a>Terms &amp; Conditions</a>
         </label>
       </div>
     </div>
-    <input type="submit" class="btn btn-primary btn-block" value="Sign up">
+    <button type="submit" class="btn btn-primary btn-block" [disabled]="form.invalid">Sign up</button>
   </form>
 </div>

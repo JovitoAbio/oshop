@@ -2,6 +2,8 @@ import { Product } from './../../shared/product.model';
 import { ProductService } from './../../shared/product.service';
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Subscription } from 'rxjs';
+import { DataBindingDirective } from '@progress/kendo-angular-grid';
+import { process } from '@progress/kendo-data-query';
 
 @Component({
   selector: 'app-admin-products',
