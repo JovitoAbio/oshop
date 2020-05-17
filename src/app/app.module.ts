@@ -29,6 +29,8 @@ import { AdminAuthGuard } from './shared/admin-auth.guard';
 import { CategoryService } from './shared/category.service';
 import { GridModule } from '@progress/kendo-angular-grid';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ProductCardComponent } from './product-card/product-card.component';
+import { ProductFilterComponent } from './products/product-filter/product-filter.component';
 
 
 
@@ -46,7 +48,9 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     ShoppingCartComponent,
     AdminOrdersComponent,
     AdminProductsComponent,
-    ProductFormComponent
+    ProductFormComponent,
+    ProductCardComponent,
+    ProductFilterComponent
   ],
   imports: [
     BrowserModule,

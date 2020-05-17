@@ -11,7 +11,7 @@ import { process } from '@progress/kendo-data-query';
   styleUrls: ['./admin-products.component.scss']
 })
 export class AdminProductsComponent implements OnInit, OnDestroy {
-  products$: Product[];
+  products: Product[];
   filteredProducts: Product[];
   subscription: Subscription;
 
@@ -19,7 +19,7 @@ export class AdminProductsComponent implements OnInit, OnDestroy {
     private productService: ProductService
   ) {
     this.subscription = this.productService.getProducts().subscribe(result => {
-      this.filteredProducts = this.products$ = result.map(e => {
+      this.filteredProducts = this.products = result.map(e => {
         return {
           id: e.payload.doc.id,
           ...e.payload.doc.data()
@@ -36,8 +36,8 @@ export class AdminProductsComponent implements OnInit, OnDestroy {
 
   filter(query: string) {
     this.filteredProducts = (query) ?
-      this.products$.filter(p => p.title.toLowerCase().includes(query.toLowerCase())) :
-      this.products$;
+      this.products.filter(p => p.title.toLowerCase().includes(query.toLowerCase())) :
+      this.products;
   }
 
 }
